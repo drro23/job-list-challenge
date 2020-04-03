@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href="./css/app.css" rel="stylesheet">
+
+  <title>Frontend Mentor | Job Listings</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <div id="bg-header"></div>
+  <div id="app">
+    <div class="container">
+      <div class="filter-card">
+
+      </div>
+      <div class="job-cards" v-for="job in jobs">
+        <div :class="job.featured ? 'featured-card job-card' : 'job-card'">
+          <div class="job-info">
+            <img class="logo" :src="job.logo" :alt="job.company + ' company'">
+
+            <div class="position-info">
+              <span class="company-name">{{ job.company }}</span>
+              <span class="new-pill" v-if="job.new">NEW!</span>
+              <span class="featured-pill" v-if="job.featured">FEATURED</span>
+              <h1 class="job-position">{{ job.position }}</h1>
+              <div class="extra-info">
+                <span>{{ job.postedAt }}</span>
+                <span class="dot"></span>
+                <span>{{ job.contract }}</span>
+                <span class="dot"></span>
+                <span>{{ job.location }}</span>
+              </div>
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="job-categories">
+            <ul class="categories">
+              <li :data-role="job.role">{{ job.role }}</li>
+              <li :data-level="job.level">{{ job.level }}</li>
+              <li v-if="job.languages" v-for="language in job.languages" :data-languages="language">{{ language }}</li>
+              <li v-if="job.tools" v-for="tool in job.tools" :data-tools="tool">{{ tool }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://www.drro.fr">Dragan Robert</a>.
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type="text/javascript" src="./js/app.js"></script>
+</body>
+</html>
