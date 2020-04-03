@@ -134,7 +134,7 @@ body {
   display: inline-block;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 675px) {
   #bg-header {
     background-image: url("../images/bg-header-mobile.svg");
   }
